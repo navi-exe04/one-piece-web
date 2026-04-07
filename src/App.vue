@@ -1,47 +1,70 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <header class="navbar">
+    <div class="nav-content">
+      <h2 class="logo">One Piece <span>Wiki</span></h2>
+      <nav>
+        <router-link to="/">Inicio</router-link>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <TheWelcome />
+  <main class="main-content">
+    <router-view></router-view>
   </main>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+/* Estilos globales para el cascarón de la app */
+.navbar {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.logo span {
+  color: #fbbf24;
+  /* Un amarillo tipo oro pirata */
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+nav a:hover,
+nav a.router-link-active {
+  /* Vue Router añade automáticamente la clase .router-link-active al enlace actual */
+  background-color: #333;
+  color: #fbbf24;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 </style>
