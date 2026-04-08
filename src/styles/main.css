@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Meie+Script&family=Pirata+One&display=swap');
+@import 'tailwindcss';
+/* 2. Extiendes el tema directamente con variables CSS */
+@theme {
+  --color-pirate-gold: #fbbf24;
+  --color-marine-blue: #1e3a8a;
+  --color-wanted-paper: #daccb2;
+  --color-danger-red: #dc2626;
+  --color-print-letter: #3f2e24;
+  --color-sea-blue: #00668e;
+
+  --font-pirate: 'Pirata One', system-ui;
+  --font-body: 'Alegreya', serif;
+  --font-elegant: 'Meie Script', cursive;
+}
+
+/* Opcional: Tus estilos globales normales */
+body {
+  background-color: var(--color-sea-blue);
+}
+
+.pirate-title {
+  font-family: var(--font-pirate);
+  font-size: 3rem;
+  color: var(--color-print-letter);
+  text-align: center;
+}
+
+.pirate-body {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  color: var(--color-print-letter);
+}
+
+.wanted-poster {
+  width: 300px;
+  height: 360px;
+  background: var(--color-wanted-paper);
+  border: 1px solid rgba(218, 204, 178, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(218, 204, 178, 0.5),
+    inset 0 -1px 0 rgba(218, 204, 178, 0.1),
+    inset 0 0 24px 12px rgba(218, 204, 178, 1.2);
+}

@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import Navbar from './components/Navbar.vue';
 </script>
 
 <template>
   <main class="main-content">
-    <Navbar />
     <section class="router-content">
       <router-view></router-view>
     </section>
