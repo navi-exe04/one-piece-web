@@ -2,6 +2,8 @@
 import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useOnePieceStore } from '../stores/useOnePieceStore';
+import OnePieceLogo from '../assets/op-logo.png';
+import JollyRoger from '../assets/jolly-roger.png';
 
 const store = useOnePieceStore();
 
@@ -16,9 +18,12 @@ onMounted(() => {
 <template>
     <main class="container mx-auto px-4 py-8 max-w-7xl">
 
-        <h1 class="font-elegant text-5xl md:text-6xl text-pirate-gold text-center mb-8 drop-shadow-md">
-            One Wiki Piece 🏴‍☠️
-        </h1>
+        <div class="flex items-center justify-center gap-4">
+            <h1 class="font-pirate text-5xl md:text-6xl text-pirate-gold text-center drop-shadow-md">
+                One Wiki Piece
+            </h1>
+            <img :src="JollyRoger" alt="Jolly Roger" class="w-30 h-30 object-cover">
+        </div>
 
         <div v-if="isLoading" class="font-body text-2xl text-wanted-paper text-center animate-pulse">
             Browsing the Grand Line...
@@ -46,8 +51,8 @@ onMounted(() => {
                         <p class="font-body text-5xl font-bold text-print-letter">
                             WANTED
                         </p>
-                        <div>
-                        </div>
+                        <img :src="OnePieceLogo" alt="Jolly Roger"
+                            class="w-55 h-40 object-cover border-2 border-print-letter">
                         <div>
                             <p class="font-body text-2xl font-bold text-print-letter">
                                 DEAD OR ALIVE
