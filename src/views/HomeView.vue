@@ -3,7 +3,6 @@ import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useOnePieceStore } from '../stores/useOnePieceStore';
 import OnePieceLogo from '../assets/op-logo.png';
-import JollyRoger from '../assets/jolly-roger.png';
 
 const store = useOnePieceStore();
 
@@ -19,14 +18,6 @@ onMounted(() => {
 
 <template>
     <main class="container mx-auto px-4 py-8 max-w-7xl">
-
-        <div class="flex items-center justify-center gap-4">
-            <h1 class="font-pirate text-5xl md:text-6xl text-pirate-gold text-center drop-shadow-md">
-                One Wiki Piece
-            </h1>
-            <img :src="JollyRoger" alt="Jolly Roger" class="w-30 h-30 object-cover">
-        </div>
-
         <div v-if="isLoading" class="font-body text-2xl text-wanted-paper text-center animate-pulse">
             Browsing the Grand Line...
         </div>
@@ -62,7 +53,7 @@ onMounted(() => {
                             <h2 class="font-pirate text-3xl font-black text-print-letter tracking-wider">
                                 {{ character.name }}
                             </h2>
-                            <p class="font-body text-2xl text-print-letter">
+                            <p v-if="character.bounty !== ''" class="font-body text-2xl text-print-letter">
                                 <span class="font-bold">฿ </span>{{ character.bounty }}
                             </p>
                         </div>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import Header from './components/Header.vue';
 </script>
 
 <template>
   <main class="main-content">
+    <Header />
     <section class="router-content">
       <router-view></router-view>
     </section>
