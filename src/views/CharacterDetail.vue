@@ -3,9 +3,10 @@ import { onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useOnePieceStore } from '../stores/useOnePieceStore';
+import OnePieceLogo from '../assets/op-logo.png';
 
-const route = useRoute(); // Para leer parámetros de la URL
-const router = useRouter(); // Para navegar programáticamente
+const route = useRoute();
+const router = useRouter();
 const store = useOnePieceStore();
 
 const { selectedCharacter, isLoading } = storeToRefs(store);
@@ -30,6 +31,10 @@ onMounted(() => {
                 <div v-if="selectedCharacter.fruit" class="fruit-info">
                     <h3>Fruta: {{ selectedCharacter.fruit.name }}</h3>
                     <p>{{ selectedCharacter.fruit.description }}</p>
+                </div>
+                <div class="image-container">
+                    <img :src="store.getCharacterImage(selectedCharacter.name) || OnePieceLogo"
+                        :alt="selectedCharacter.name">
                 </div>
             </div>
         </div>

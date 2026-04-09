@@ -7,11 +7,13 @@ import JollyRoger from '../assets/jolly-roger.png';
 
 const store = useOnePieceStore();
 
-const { characters, isLoading, error, totalCharacters } = storeToRefs(store);
-const { fetchCharacters } = store;
+const { characters, isLoading, error, totalCharacters, charactersMedia } = storeToRefs(store);
+const { fetchOnePieceInformation } = store;
 
 onMounted(() => {
-    fetchCharacters();
+    if (!characters.value.length && !charactersMedia.value.length) {
+        fetchOnePieceInformation();
+    }
 });
 </script>
 
@@ -31,14 +33,14 @@ onMounted(() => {
 
         <div v-else-if="error" class="bg-red-100 text-red-800 p-4 rounded-lg text-center max-w-lg mx-auto">
             <p class="font-bold">{{ error }}</p>
-            <button @click="fetchCharacters"
+            <button @click="fetchOnePieceInformation"
                 class="mt-4 px-4 py-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 transition-colors cursor-pointer">
                 Retry Search
             </button>
         </div>
 
         <div v-else>
-            <p class="font-body text-xl text-wanted-paper/80 text-center mb-8">
+            <p class="font-body text-xl text-white text-center mb-8">
                 Pirates and marines in the sea: {{ totalCharacters }}
             </p>
 
@@ -51,8 +53,8 @@ onMounted(() => {
                         <p class="font-body text-5xl font-bold text-print-letter">
                             WANTED
                         </p>
-                        <img :src="OnePieceLogo" alt="Jolly Roger"
-                            class="w-55 h-40 object-cover border-2 border-print-letter">
+                        <img :src="store.getCharacterImage(character.name) || OnePieceLogo" alt="Jolly Roger"
+                            class="w-55 h-40 border-2 border-print-letter">
                         <div>
                             <p class="font-body text-2xl font-bold text-print-letter">
                                 DEAD OR ALIVE
