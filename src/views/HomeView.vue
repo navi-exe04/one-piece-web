@@ -3,6 +3,7 @@ import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useOnePieceStore } from '../stores/useOnePieceStore';
 import OnePieceLogo from '../assets/op-logo.png';
+import LoadingIcon from '../components/LoadingIcon.vue';
 
 const store = useOnePieceStore();
 
@@ -19,7 +20,8 @@ onMounted(() => {
 <template>
     <main class="container mx-auto px-4 py-8 max-w-7xl">
         <div v-if="isLoading" class="font-body text-2xl text-wanted-paper text-center animate-pulse">
-            Browsing the Grand Line...
+            <span>Browsing the Grand Line...</span>
+            <LoadingIcon />
         </div>
 
         <div v-else-if="error" class="bg-red-100 text-red-800 p-4 rounded-lg text-center max-w-lg mx-auto">

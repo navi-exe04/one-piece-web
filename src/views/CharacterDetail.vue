@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useOnePieceStore } from '../stores/useOnePieceStore';
 import OnePieceLogo from '../assets/op-logo.png';
+import LoadingIcon from '../components/LoadingIcon.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -19,11 +20,14 @@ onMounted(() => {
 
 <template>
     <section class="max-w-200 mx-auto">
-        <button @click="router.back()" class="bg-danger-red text-pirate-gold font-bold p-2 rounded-md cursor-pointer">
+        <button @click="router.back()" class="bg-pirate-gold text-black p-2 rounded-md cursor-pointer">
             ← Go back to the Grand Line
         </button>
 
-        <div v-if="isLoading">Searching the character details...</div>
+        <div v-if="isLoading" class="font-body text-2xl text-wanted-paper text-center animate-pulse mt-8">
+            <span>Searching the character details...</span>
+            <LoadingIcon />
+        </div>
 
         <div v-else-if="selectedCharacter"
             class="bg-wanted-paper mt-8 px-4 py-6 rounded-md flex justify-between mx-auto">
