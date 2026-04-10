@@ -11,10 +11,8 @@ const store = useOnePieceStore()
 const { characters, isLoading, error, totalCharacters, charactersMedia } = storeToRefs(store)
 const { fetchOnePieceInformation } = store
 
-onMounted(() => {
-  if (!characters.value.length && !charactersMedia.value.length) {
-    fetchOnePieceInformation()
-  }
+onMounted( () => {
+  fetchOnePieceInformation()
 })
 </script>
 

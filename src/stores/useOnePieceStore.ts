@@ -64,10 +64,15 @@ export const useOnePieceStore = defineStore('onePiece', () => {
   const fetchOnePieceInformation = async () => {
     isLoading.value = true
     try {
-      await fetchCharacters()
-      await fetchCharactersMedia()
+      if (!characters.value.length) {
+        await fetchCharacters()
+      }
+
+      if (!charactersMedia.value.length) {
+        await fetchCharactersMedia()
+      }
     } catch (err) {
-      console.error('Error al obtener la información de One Piece:', err)
+      console.error('Error obtaining the One Piece information:', err)
     } finally {
       isLoading.value = false
     }
@@ -97,6 +102,8 @@ export const useOnePieceStore = defineStore('onePiece', () => {
     totalCharacters,
     fetchOnePieceInformation,
     fetchCharacterById,
+    fetchCharactersMedia,
+    fetchCharacters,
     getCharacterImage,
   }
 })

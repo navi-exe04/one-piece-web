@@ -11,15 +11,20 @@ const router = useRouter()
 const store = useOnePieceStore()
 
 const { selectedCharacter, isLoading } = storeToRefs(store)
+const { fetchCharactersMedia } = store
 
 onMounted(() => {
   const id = route.params.id as string
   store.fetchCharacterById(id)
+
+  if (!store.charactersMedia.length) {
+    fetchCharactersMedia()
+  }
 })
 </script>
 
 <template>
-  <section class="max-w-200 mx-auto">
+  <section class="max-w-200 mx-auto px-8">
     <button @click="router.back()" class="bg-pirate-gold text-black p-2 rounded-md cursor-pointer">
       ← Go back to the Grand Line
     </button>
