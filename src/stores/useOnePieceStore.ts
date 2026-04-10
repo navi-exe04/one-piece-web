@@ -57,7 +57,7 @@ export const useOnePieceStore = defineStore('onePiece', () => {
       const data = await res.json()
       charactersMedia.value = data.data
     } catch (error) {
-      console.error('Error al obtener el Cast de Jikan:', error)
+      console.error('Error obtaining the cast:', error)
     }
   }
 
